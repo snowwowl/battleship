@@ -1,19 +1,17 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import Pages from 'vite-plugin-pages';
-import path from 'path';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import Pages from 'vite-plugin-pages'
+import eslint from 'vite-plugin-eslint'
+import path from 'path'
 
-const basePath = path.resolve('src');
+const basePath = path.resolve('src')
 
 export default defineConfig({
-    plugins: [
-        react(),
-        Pages()
-    ],
+    plugins: [react(), eslint(), Pages()],
     server: {
         watch: {
-            usePolling: true
-        }
+            usePolling: true,
+        },
     },
     resolve: {
         alias: {
@@ -22,7 +20,7 @@ export default defineConfig({
             '@styles': path.resolve(basePath, 'styles'),
             '@assets': path.resolve(basePath, 'assets'),
             '@pages': path.resolve(basePath, 'pages'),
-            '@utils': path.resolve(basePath, 'utils')
-        }
-    }
-});
+            '@utils': path.resolve(basePath, 'utils'),
+        },
+    },
+})
